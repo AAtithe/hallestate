@@ -1,0 +1,11 @@
+{
+  "minNoticeDays": 2,
+  "horizonMonths": 18,
+  "maxGuests": 11,
+  "maxDogs": 2,
+  "stays": [
+    { "id": "week", "label": "A week", "nights": 7, "arrivalDays": [5], "description": "Friday to Friday" },
+    { "id": "weekend", "label": "A weekend", "nights": 3, "arrivalDays": [5], "description": "Friday to Monday" }
+  ],
+  "blocked": []
+}

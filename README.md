@@ -45,7 +45,7 @@ That also regenerates `vercel.json`.
 python3 -m http.server 8000
 ```
 
-Open http://localhost:8000/estate/ and click through. Links between sites use folder paths, so everything works offline.
+Open http://localhost:8000/estate/ and click through. Use `npm run dev` instead to run the booking API too. Links between sites use folder paths, so everything works offline.
 
 ## Going live (Vercel)
 
@@ -55,12 +55,38 @@ Open http://localhost:8000/estate/ and click through. Links between sites use fo
 
 `vercel.json` routes each domain to its own folder, and redirects any link to a sister site onto that site's own domain. Preview URLs and unknown hosts land on the estate home.
 
+## Halecat booking calendar
+
+Guests pick a week or weekend on the Halecat page and send a booking request. Elaine gets an email she can reply to directly, and the guest gets an acknowledgement. Nothing is confirmed or paid online: Elaine confirms every booking herself.
+
+Availability comes straight from the bookings diary, so there is no second calendar to keep up to date. Only dates are read, never guest names or notes.
+
+Set these in Vercel (Project, Settings, Environment Variables):
+
+| Variable | What it is |
+|---|---|
+| `HALECAT_ICAL_URLS` | The diary's private iCal address. In Google Calendar: Settings, the Halecat calendar, "Secret address in iCal format". Airbnb and Booking.com have an "export calendar" link. Several feeds can be listed, separated by commas, and are combined. |
+| `RESEND_API_KEY` | Resend API key (same provider as williamsstanley.co). |
+| `RESEND_FROM_EMAIL` | Sender, for example `Halecat House <bookings@halecat.co.uk>`. Verify halecat.co.uk in Resend first or nothing is delivered. |
+| `HALECAT_BOOKINGS_TO` | Where requests go, for example Elaine's inbox. |
+
+How Elaine blocks dates: add an all-day event to the diary covering the nights the house is taken, ending on the departure day. Changes show on the site within about ten minutes.
+
+Stay rules live in `halecat/booking.json`:
+
+- `stays`: each type of stay, its length in nights and allowed arrival days (0 is Sunday, 5 is Friday). To offer midweek breaks, add `{ "id": "midweek", "label": "Midweek", "nights": 4, "arrivalDays": [1], "description": "Monday to Friday" }`.
+- `minNoticeDays`, `horizonMonths`, `maxGuests`, `maxDogs`.
+- `blocked`: dates closed for any reason outside the diary, for example `{ "start": "2027-01-04", "end": "2027-01-15" }` (end is the first free day).
+
+Until the variables are set, the calendar shows dates from `blocked` only and requests ask the guest to ring Elaine. If the diary feed cannot be read, the calendar is hidden and the page simply says to ring Elaine, so it never shows a booked week as free.
+
+Test locally with the API running: `npm run dev`, then http://localhost:8000/halecat/#book. Rules are tested with `npm test`. Add a Vercel Firewall rate limit on `/api/` before launch.
+
 ## Before launch
 
 - Confirm `witherslackestate.co.uk` is the right domain for the estate home (it matches the estate office email). If not, change it in `scripts/sync.py` and re-run.
 - Orchards phone: the old site shows both 07760 286785 and 07881 098359. The new site uses 07760 286785.
 - The Orchards Wix shop will stop working once the domain moves. Online ordering is currently by email; add a shop (for example Shopify Buy Button or Stripe Payment Links) if direct sales justify it.
-- Halecat booking is by phone with Elaine. An availability calendar or booking widget would convert better.
 - Photography is taken from the existing sites. Halecat in particular needs interior shots (bedrooms, library, fire, summerhouse).
 - Set 301 redirects for important old URLs (for example `/firewood`, `/accommodation-details/`) to the matching section, to protect search rankings.
 - The "Who else is here" list on the estate page (Abi & Tom's, Charlie Whinney, Woodworks, Woodsmoke, the artists) comes from older pages on the current sites. Check each is still trading at Halecat before launch.

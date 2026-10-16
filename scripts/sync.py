@@ -165,6 +165,7 @@ def vercel_config():
                 "permanent": True,
             })
         rewrites.append({"source": "/assets/:path*", "has": host_match, "destination": "/assets/:path*"})
+        rewrites.append({"source": "/api/:path*", "has": host_match, "destination": "/api/:path*"})
         rewrites.append({"source": "/:path*", "has": host_match, "destination": f"/{key}/:path*"})
     # Previews and any unmatched host land on the estate home.
     known = "|".join(re.escape(d) for d in hosts.values())

@@ -202,6 +202,16 @@
       "destination": "/assets/:path*"
     },
     {
+      "source": "/api/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackestate\\.co\\.uk"
+        }
+      ],
+      "destination": "/api/:path*"
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -220,6 +230,16 @@
         }
       ],
       "destination": "/assets/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?halecat\\.co\\.uk"
+        }
+      ],
+      "destination": "/api/:path*"
     },
     {
       "source": "/:path*",
@@ -242,6 +262,16 @@
       "destination": "/assets/:path*"
     },
     {
+      "source": "/api/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackwoodlands\\.co\\.uk"
+        }
+      ],
+      "destination": "/api/:path*"
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -260,6 +290,16 @@
         }
       ],
       "destination": "/assets/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackorchards\\.co\\.uk"
+        }
+      ],
+      "destination": "/api/:path*"
     },
     {
       "source": "/:path*",

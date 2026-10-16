@@ -46,7 +46,7 @@
       <h1>Welcome to Halecat</h1>
       <p>Our very special holiday house, at the heart of Witherslack Estate. A late Georgian family home for up to eleven guests, by the week or the weekend. Dogs are welcome too.</p>
       <div class="btn-row">
-        <a class="btn btn--light" href="#book">Ring Elaine to book</a>
+        <a class="btn btn--light" href="#book">Check availability</a>
         <a class="btn btn--ghost" href="#house">Look round the house</a>
       </div>
     </div>
@@ -224,22 +224,85 @@
     </div>
   </section>
 
-  <section class="section section--accent" id="book" aria-labelledby="book-title">
-    <div class="wrap contact">
-      <div>
-        <span class="eyebrow">Book</span>
-        <h2 id="book-title">Ring Elaine</h2>
-        <p class="lede">For availability, prices and anything else you'd like to know, give Elaine a ring.</p>
-        <div class="btn-row"><a class="btn btn--light" href="tel:+441539552387">Call 015395 52387</a></div>
+  <section class="section section--tint" id="book" aria-labelledby="book-title">
+    <div class="wrap">
+      <div class="intro">
+        <div>
+          <span class="eyebrow">Book</span>
+          <h2 id="book-title">Check availability</h2>
+        </div>
+        <div>
+          <p class="lede">Choose a week or a weekend, pick your arrival day and send us a booking request.</p>
+          <p>Elaine will check the diary and get back to you to confirm the dates and the price. Nothing is booked or paid for until she does. Rather talk it through? Ring her on <a href="tel:+441539552387">015395 52387</a>.</p>
+        </div>
       </div>
-      <dl>
-        <dt>Telephone</dt>
-        <dd><a href="tel:+441539552387">015395 52387</a></dd>
-        <dt>Address</dt>
-        <dd>Halecat House, Witherslack Hall Estate, Witherslack, Grange-over-Sands, Cumbria LA11 6RT</dd>
-        <dt>Stays</dt>
-        <dd>By the week or the weekend, all year round</dd>
-      </dl>
+
+      <div class="booking" id="booking" hidden>
+        <div class="booking__cal">
+          <fieldset class="segmented" data-stays>
+            <legend class="sr-only">Length of stay</legend>
+          </fieldset>
+          <div class="cal-head">
+            <button type="button" class="cal-nav" data-prev aria-label="Previous month">&lsaquo;</button>
+            <button type="button" class="cal-nav" data-next aria-label="Next month">&rsaquo;</button>
+          </div>
+          <div class="cal-months" data-months></div>
+          <ul class="cal-key">
+            <li><span class="cal-key__swatch is-arrival"></span>You can arrive</li>
+            <li><span class="cal-key__swatch is-booked"></span>Booked</li>
+            <li><span class="cal-key__swatch is-stay"></span>Your stay</li>
+          </ul>
+        </div>
+
+        <form class="booking__form" novalidate>
+          <div class="booking__summary" data-summary aria-live="polite"></div>
+          <div class="field">
+            <label for="b-name">Your name</label>
+            <input id="b-name" name="name" autocomplete="name" required maxlength="200">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="b-email">Email</label>
+              <input id="b-email" name="email" type="email" autocomplete="email" required maxlength="200">
+            </div>
+            <div class="field">
+              <label for="b-phone">Phone</label>
+              <input id="b-phone" name="phone" type="tel" autocomplete="tel" maxlength="200">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="b-guests">Guests</label>
+              <select id="b-guests" name="guests"></select>
+            </div>
+            <div class="field">
+              <label for="b-dogs">Dogs</label>
+              <select id="b-dogs" name="dogs"></select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="b-message">Anything else? <span>Optional</span></label>
+            <textarea id="b-message" name="message" rows="4" maxlength="3000" placeholder="A special birthday, extra beds, a cot, campers in the orchard..."></textarea>
+          </div>
+          <div class="field field--hp" aria-hidden="true">
+            <label for="b-website">Leave this empty</label>
+            <input id="b-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="form-error" data-error role="alert" hidden></p>
+          <button class="btn" type="submit" disabled>Send booking request</button>
+          <p class="form-note">We'll only use your details to deal with your booking.</p>
+        </form>
+
+        <div class="booking__done" data-done tabindex="-1" hidden>
+          <h3>Thank you</h3>
+          <p>We've got your request for <span data-done-dates></span>.</p>
+          <p>Elaine will be in touch soon to confirm. We've sent you an email too, so check your inbox (and the spam folder, just in case).</p>
+        </div>
+      </div>
+
+      <div class="booking-fallback" data-booking-fallback>
+        <p>To check availability and book, ring Elaine on <a href="tel:+441539552387">015395 52387</a>.</p>
+      </div>
     </div>
   </section>
 
@@ -252,5 +315,7 @@
 <footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand"><svg aria-hidden="true"><use href="#mark-estate"/></svg><div><strong>Witherslack Hall Estate</strong><p>800 hectares between the River Winster and Whitbarrow Scar, and the largest area of semi natural woodland in Cumbria.</p></div></div><div><h4>The estate</h4><ul><li><a href="../estate/">Estate home</a></li><li><a href="../halecat/">Halecat House</a></li><li><a href="../woodlands/">Witherslack Woodlands</a></li><li><a href="../orchards/">Witherslack Orchards</a></li></ul></div><div><h4>Find us</h4><p>Halecat,<br>Witherslack,<br>Grange-over-Sands,<br>Cumbria LA11 6RT</p></div><div><h4>Estate office</h4><ul><li><a href="tel:+441539552387">015395 52387</a></li><li><a href="../estate/#contact">All contacts</a></li></ul></div></div><div class="footer-base"><span>&copy; <span data-year>2026</span> Witherslack Hall Estate</span><span>Witherslack, Grange-over-Sands, Cumbria</span></div></div></footer>
 <!-- /@footer -->
 <script src="../assets/js/estate.js" defer></script>
+<script src="../assets/js/stays.js" defer></script>
+<script src="../assets/js/booking.js" defer></script>
 </body>
 </html>

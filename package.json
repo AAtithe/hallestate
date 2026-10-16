@@ -1,0 +1,11 @@
+{
+  "name": "witherslack-estate",
+  "private": true,
+  "description": "Witherslack Hall Estate websites: estate, Halecat House, Woodlands, Orchards",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "sync": "python3 scripts/sync.py",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": { "node": ">=20" }
+}
