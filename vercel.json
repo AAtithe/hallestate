@@ -1,0 +1,275 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/estate/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackestate\\.co\\.uk"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/halecat/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackestate\\.co\\.uk"
+        }
+      ],
+      "destination": "https://halecat.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/woodlands/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackestate\\.co\\.uk"
+        }
+      ],
+      "destination": "https://witherslackwoodlands.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/orchards/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackestate\\.co\\.uk"
+        }
+      ],
+      "destination": "https://witherslackorchards.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/estate/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?halecat\\.co\\.uk"
+        }
+      ],
+      "destination": "https://witherslackestate.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/halecat/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?halecat\\.co\\.uk"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/woodlands/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?halecat\\.co\\.uk"
+        }
+      ],
+      "destination": "https://witherslackwoodlands.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/orchards/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?halecat\\.co\\.uk"
+        }
+      ],
+      "destination": "https://witherslackorchards.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/estate/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackwoodlands\\.co\\.uk"
+        }
+      ],
+      "destination": "https://witherslackestate.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/halecat/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackwoodlands\\.co\\.uk"
+        }
+      ],
+      "destination": "https://halecat.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/woodlands/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackwoodlands\\.co\\.uk"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/orchards/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackwoodlands\\.co\\.uk"
+        }
+      ],
+      "destination": "https://witherslackorchards.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/estate/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackorchards\\.co\\.uk"
+        }
+      ],
+      "destination": "https://witherslackestate.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/halecat/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackorchards\\.co\\.uk"
+        }
+      ],
+      "destination": "https://halecat.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/woodlands/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackorchards\\.co\\.uk"
+        }
+      ],
+      "destination": "https://witherslackwoodlands.co.uk/",
+      "permanent": true
+    },
+    {
+      "source": "/orchards/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackorchards\\.co\\.uk"
+        }
+      ],
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "missing": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?(?:witherslackestate\\.co\\.uk|halecat\\.co\\.uk|witherslackwoodlands\\.co\\.uk|witherslackorchards\\.co\\.uk)"
+        }
+      ],
+      "destination": "/estate/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/assets/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackestate\\.co\\.uk"
+        }
+      ],
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackestate\\.co\\.uk"
+        }
+      ],
+      "destination": "/estate/:path*"
+    },
+    {
+      "source": "/assets/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?halecat\\.co\\.uk"
+        }
+      ],
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?halecat\\.co\\.uk"
+        }
+      ],
+      "destination": "/halecat/:path*"
+    },
+    {
+      "source": "/assets/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackwoodlands\\.co\\.uk"
+        }
+      ],
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackwoodlands\\.co\\.uk"
+        }
+      ],
+      "destination": "/woodlands/:path*"
+    },
+    {
+      "source": "/assets/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackorchards\\.co\\.uk"
+        }
+      ],
+      "destination": "/assets/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?:www\\.)?witherslackorchards\\.co\\.uk"
+        }
+      ],
+      "destination": "/orchards/:path*"
+    }
+  ]
+}
