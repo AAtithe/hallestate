@@ -138,11 +138,111 @@
     </div>
   </section>
 
-  <section class="section section--accent" id="order" aria-labelledby="order-title">
+  <section class="section" id="order" aria-labelledby="order-title">
+    <div class="wrap">
+      <div class="intro">
+        <div>
+          <span class="eyebrow">Order logs</span>
+          <h2 id="order-title">Order your logs</h2>
+        </div>
+        <div>
+          <p class="lede">Tell us what you need and where it's going, and we'll ring you back to arrange delivery and confirm the price.</p>
+          <p>You pay when the logs arrive, by card, BACS or cheque. Nothing is charged online.</p>
+        </div>
+      </div>
+
+      <div class="booking order" id="order-form" hidden>
+        <form class="order__form" novalidate>
+          <fieldset class="field-group">
+            <legend>What would you like?</legend>
+            <div class="segmented" data-products></div>
+          </fieldset>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-bags">How many dumpy bags?</label>
+              <select id="f-bags" name="bags"></select>
+            </div>
+            <div class="field" data-length hidden>
+              <label for="f-length">Log length</label>
+              <input id="f-length" name="logLength" maxlength="40" placeholder="e.g. 25cm">
+            </div>
+          </div>
+
+          <fieldset class="field-group">
+            <legend>Delivery or collection?</legend>
+            <div class="segmented">
+              <label class="segmented__option"><input type="radio" name="method" value="delivery" checked><span class="segmented__label">Deliver to me</span><span class="segmented__sub">Across South Cumbria</span></label>
+              <label class="segmented__option"><input type="radio" name="method" value="collect"><span class="segmented__label">I'll collect</span><span class="segmented__sub">From the yard at Halecat</span></label>
+            </div>
+          </fieldset>
+
+          <div data-delivery>
+            <div class="field">
+              <label for="f-area">Where are you?</label>
+              <select id="f-area" name="area"></select>
+            </div>
+            <div class="field">
+              <label for="f-address">Delivery address</label>
+              <textarea id="f-address" name="address" rows="3" maxlength="500" autocomplete="street-address"></textarea>
+            </div>
+            <div class="field">
+              <label for="f-postcode">Postcode</label>
+              <input id="f-postcode" name="postcode" maxlength="12" autocomplete="postal-code" style="max-width:12em;text-transform:uppercase">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" autocomplete="name" required maxlength="200">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-phone">Phone</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required maxlength="60">
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="200">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-notes">Access and notes <span>Optional</span></label>
+            <textarea id="f-notes" name="notes" rows="3" maxlength="2000" placeholder="Gates, narrow lanes, where you'd like the logs tipped..."></textarea>
+          </div>
+          <label class="check">
+            <input type="checkbox" name="reminder">
+            <span>Email me next September when it's time to stock up for winter. You can unsubscribe any time.</span>
+          </label>
+          <div class="field field--hp" aria-hidden="true">
+            <label for="f-website">Leave this empty</label>
+            <input id="f-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="form-error" data-error role="alert" hidden></p>
+          <button class="btn" type="submit">Send order</button>
+          <p class="form-note">We'll only use your details for your order, and for the reminder if you ask for it.</p>
+        </form>
+
+        <aside class="order__summary" aria-live="polite">
+          <h3>Your order</h3>
+          <dl data-summary></dl>
+          <p class="order__total" data-total></p>
+          <p class="order__small">Logs are seasoned for up to a year in our own sheds. Up to six dumpy bags a load, delivered loose by our tipping Land Rover.</p>
+        </aside>
+
+        <div class="booking__done" data-done tabindex="-1" hidden>
+          <h3>Thank you</h3>
+          <p>We've got your order for <span data-done-what></span>.</p>
+          <p>We'll ring you as soon as we can to arrange delivery. If we're slow, we're probably out in the woods with our ear defenders on. We've emailed you a copy too.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--accent" id="ring" aria-labelledby="ring-title">
     <div class="wrap contact">
       <div>
-        <span class="eyebrow">Order logs</span>
-        <h2 id="order-title">Give us a ring</h2>
+        <span class="eyebrow">Rather talk?</span>
+        <h2 id="ring-title">Give us a ring</h2>
         <p class="lede">The phone is on answerphone most of the day (we're wearing ear defenders). Leave a message and we'll call you back as soon as we can to sort out the best time for delivery.</p>
         <div class="btn-row"><a class="btn btn--light" href="tel:+441539552353">Call 015395 52353</a></div>
       </div>
@@ -170,5 +270,7 @@
 <footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand"><svg aria-hidden="true"><use href="#mark-estate"/></svg><div><strong>Witherslack Hall Estate</strong><p>800 hectares between the River Winster and Whitbarrow Scar, and the largest area of semi natural woodland in Cumbria.</p></div></div><div><h4>The estate</h4><ul><li><a href="../estate/">Estate home</a></li><li><a href="../halecat/">Halecat House</a></li><li><a href="../woodlands/">Witherslack Woodlands</a></li><li><a href="../orchards/">Witherslack Orchards</a></li></ul></div><div><h4>Find us</h4><p>Halecat,<br>Witherslack,<br>Grange-over-Sands,<br>Cumbria LA11 6RT</p></div><div><h4>Estate office</h4><ul><li><a href="tel:+441539552387">015395 52387</a></li><li><a href="../estate/#contact">All contacts</a></li></ul></div></div><div class="footer-base"><span>&copy; <span data-year>2026</span> Witherslack Hall Estate</span><span>Witherslack, Grange-over-Sands, Cumbria</span></div></div></footer>
 <!-- /@footer -->
 <script src="../assets/js/estate.js" defer></script>
+<script src="../assets/js/firewood.js" defer></script>
+<script src="../assets/js/order.js" defer></script>
 </body>
 </html>

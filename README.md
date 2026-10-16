@@ -82,6 +82,27 @@ Until the variables are set, the calendar shows dates from `blocked` only and re
 
 Test locally with the API running: `npm run dev`, then http://localhost:8000/halecat/#book. Rules are tested with `npm test`. Add a Vercel Firewall rate limit on `/api/` before launch.
 
+## Firewood orders (Woodlands)
+
+Customers choose seasoned logs or logs cut to fit, how many dumpy bags (up to six), and delivery or collection. The summary shows free delivery for Witherslack, Meathop and Ulpha, a charge or "we'll quote" for the rest of South Cumbria, and "outside our usual area" elsewhere. The order is emailed to the woodyard (reply goes straight to the customer) and the customer gets a copy. Payment is taken on delivery, as now.
+
+Prices and delivery live in `woodlands/firewood.json`:
+
+- `pricePerBag` for each product. Leave it `null` and the form says the price is confirmed when you ring; set a number (for example `95`) and it shows an estimated total.
+- `deliveryDistricts`: the postcode areas you deliver to, each with a charge in pounds, or `null` for "we'll quote". Postcodes outside the list are told you'll let them know.
+- `freeAreas`: villages with free delivery.
+
+Settings in Vercel:
+
+| Variable | What it is |
+|---|---|
+| `RESEND_API_KEY` | Same key as the booking calendar. |
+| `WOODLANDS_FROM_EMAIL` | Sender, for example `Witherslack Woodlands <orders@witherslackwoodlands.co.uk>`. Verify the domain in Resend first. |
+| `WOODLANDS_ORDERS_TO` | Where orders go. Defaults to sales@witherslackwoodlands.co.uk. |
+| `WOODLANDS_RESEND_AUDIENCE_ID` | Optional. A Resend audience for customers who tick "email me next September". Send the stock-up reminder to that audience each year. |
+
+`HALECAT_FROM_EMAIL` does the same job for the booking calendar, so each business emails from its own address.
+
 ## Before launch
 
 - Confirm `witherslackestate.co.uk` is the right domain for the estate home (it matches the estate office email). If not, change it in `scripts/sync.py` and re-run.

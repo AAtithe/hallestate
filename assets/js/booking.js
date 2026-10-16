@@ -41,7 +41,7 @@
   }
 
   function loadAvailability() {
-    return fetch("/api/availability", { headers: { Accept: "application/json" } }).then(function (r) {
+    return fetch("/api/availability/", { headers: { Accept: "application/json" } }).then(function (r) {
       // No API (a static preview): fall back to the manual closures in booking.json.
       if (r.status === 404) return { booked: config.blocked || [] };
       if (!r.ok) throw new Error("Availability unavailable");
@@ -235,7 +235,7 @@
     submit.disabled = true;
     submit.textContent = "Sending...";
 
-    fetch("/api/booking-request", {
+    fetch("/api/booking-request/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

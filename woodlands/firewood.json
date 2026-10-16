@@ -1,0 +1,22 @@
+{
+  "maxBags": 6,
+  "products": [
+    { "id": "logs", "label": "Seasoned logs", "description": "Standard size, air dried to 20% moisture or less", "pricePerBag": null },
+    { "id": "cut", "label": "Logs cut to fit", "description": "Cut to the length your stove or boiler needs", "pricePerBag": null }
+  ],
+  "freeAreas": ["Witherslack", "Meathop", "Ulpha"],
+  "deliveryDistricts": {
+    "LA5": null,
+    "LA6": null,
+    "LA7": null,
+    "LA8": null,
+    "LA9": null,
+    "LA10": null,
+    "LA11": null,
+    "LA12": null,
+    "LA21": null,
+    "LA22": null,
+    "LA23": null
+  },
+  "deliveryNote": "about £8 per 15 minute round trip"
+}
