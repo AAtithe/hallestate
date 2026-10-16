@@ -109,3 +109,14 @@ The sites should feel made by the people who live here. The touches are delibera
 - One handwritten `<p class="note">` per section at most, and only for a real, useful fact (free delivery villages, the second drawer down). Never a slogan.
 - `<p class="signoff">The Stanley family</p>` appears once, on Halecat.
 - The estate map on the estate home is a sketch and says so. Edit labels in `estate/index.html`.
+
+## Name previews
+
+To see how a business would look under another name, without touching the real site:
+
+```
+python3 scripts/sync.py
+python3 scripts/rename_preview.py orchards "Halecat Orchards"
+```
+
+This writes `previews/halecat-orchards/`, open it at http://localhost:8000/previews/halecat-orchards/. It carries a "Preview only" banner and is hidden from search engines. Email addresses and social links keep the current name, because changing those means new accounts.

@@ -643,3 +643,13 @@ body {
 .map text.is-woodlands { fill: var(--woodlands); }
 .map text.is-orchards { fill: var(--orchards); }
 .map g.rough { filter: url(#hand-ink); }
+
+/* Banner on renamed previews (scripts/rename_preview.py) */
+.preview-banner {
+  background: #f3d98b;
+  color: #3a2f12;
+  font: 600 13px/1.4 var(--sans);
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 8px 16px;
+}
