@@ -8,22 +8,13 @@ const config = require("../halecat/booking.json");
 const stays = require("../assets/js/stays");
 const { fetchBooked, feedUrls } = require("./_lib/ical");
 const { sendEmail, isEmailConfigured, isValidEmail } = require("./_lib/email");
+const { tooMany } = require("./_lib/limit");
 
 const PHONE = "015395 52387";
 const TO = process.env.HALECAT_BOOKINGS_TO;
+const FROM = process.env.HALECAT_FROM_EMAIL || process.env.RESEND_FROM_EMAIL;
 const MAX_FIELD = 200;
 const MAX_MESSAGE = 3000;
-
-// Per-instance limit. It stops a stuck button or a casual script, not a
-// determined attack; pair it with a Vercel Firewall rate limit on /api/.
-const recent = new Map();
-function tooMany(ip) {
-  const now = Date.now();
-  const hits = (recent.get(ip) || []).filter((t) => now - t < 10 * 60 * 1000);
-  hits.push(now);
-  recent.set(ip, hits);
-  return hits.length > 5;
-}
 
 function str(value, max) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -61,8 +52,7 @@ module.exports = async (req, res) => {
   // Honeypot: a real person never fills the hidden field.
   if (str(body.website, MAX_FIELD)) return res.status(200).json({ ok: true });
 
-  const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
-  if (tooMany(ip)) {
+  if (tooMany(req, "booking")) {
     return res.status(429).json({ error: `That's a few requests in a row. Please ring Elaine on ${PHONE}.` });
   }
 
@@ -132,6 +122,7 @@ module.exports = async (req, res) => {
   try {
     await sendEmail({
       to: TO,
+      from: FROM,
       replyTo: email,
       subject: `Booking request: ${type.label.toLowerCase()} from ${longDate(arrival)}, ${name}`,
       text: lines.join("\n"),
@@ -145,6 +136,7 @@ module.exports = async (req, res) => {
   // so the form can't be used to send strangers a message of someone's choosing.
   await Promise.allSettled([
     sendEmail({
+      from: FROM,
       to: email,
       replyTo: TO,
       subject: "Your Halecat booking request",

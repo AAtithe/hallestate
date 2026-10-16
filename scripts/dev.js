@@ -35,7 +35,7 @@ function withHelpers(res) {
 http
   .createServer((req, res) => {
     const url = new URL(req.url, `http://${req.headers.host}`);
-    const api = /^\/api\/([a-z-]+)$/.exec(url.pathname);
+    const api = /^\/api\/([a-z-]+)\/?$/.exec(url.pathname);
     if (api) {
       const file = path.join(ROOT, "api", `${api[1]}.js`);
       if (!fs.existsSync(file)) return withHelpers(res).status(404).json({ error: "Not found" });

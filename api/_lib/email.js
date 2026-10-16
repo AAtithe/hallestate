@@ -1,20 +1,20 @@
 // Outbound email via Resend's REST API. Server-side only, the key never
 // reaches the browser. Same provider as williamsstanley.co.
 
-const FROM = process.env.RESEND_FROM_EMAIL || "Halecat House <onboarding@resend.dev>";
+const DEFAULT_FROM = process.env.RESEND_FROM_EMAIL || "Witherslack Hall Estate <onboarding@resend.dev>";
 
 function isEmailConfigured() {
   return Boolean(process.env.RESEND_API_KEY);
 }
 
-async function sendEmail({ to, replyTo, subject, text }) {
+async function sendEmail({ to, replyTo, subject, text, from }) {
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ from: FROM, to, reply_to: replyTo, subject, text }),
+    body: JSON.stringify({ from: from || DEFAULT_FROM, to, reply_to: replyTo, subject, text }),
     signal: AbortSignal.timeout(10000),
   });
   if (!res.ok) {
