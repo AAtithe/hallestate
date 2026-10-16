@@ -29,7 +29,7 @@ SITES = {
         "name": "Halecat House",
         "short": "Halecat",
         "domain": "halecat.co.uk",
-        "line": "A late Georgian house to stay, gather and celebrate",
+        "line": "Our late Georgian family house, sleeps eleven, dogs welcome",
         "image": "halecat-house.jpg",
         "alt": "Smoke bush leaves in autumn against the stone front of Halecat House",
     },
@@ -37,7 +37,7 @@ SITES = {
         "name": "Witherslack Woodlands",
         "short": "Woodlands",
         "domain": "witherslackwoodlands.co.uk",
-        "line": "Seasoned firewood and biomass from managed native woodland",
+        "line": "Air dried logs from our own woods, delivered across South Cumbria",
         "image": "woodlands-landrover.jpg",
         "alt": "The Witherslack Woodlands Land Rover outside the timber woodshed",
     },
@@ -45,7 +45,7 @@ SITES = {
         "name": "Witherslack Orchards",
         "short": "Orchards",
         "domain": "witherslackorchards.co.uk",
-        "line": "Juice and damson gin from 21 ancient Lakeland orchards",
+        "line": "Apple juice, apple and damson juice and damson gin, made at Halecat",
         "image": "orchards-damsons.jpg",
         "alt": "A wicker basket full of freshly picked Witherslack damsons",
     },
@@ -110,9 +110,9 @@ def family(current):
     return (
         '<section class="section section--tint" aria-labelledby="family-title"><div class="wrap">'
         '<span class="eyebrow">Also on the estate</span>'
-        '<h2 id="family-title">One estate, three ways in</h2>'
-        '<p class="lede">Halecat House, the woodlands and the orchards share the same 800 hectares, '
-        'the same yard and the same people. <a href="../estate/">See how the estate fits together</a>.</p>'
+        '<h2 id="family-title">Our neighbours at Halecat</h2>'
+        '<p class="lede">The house, the woodyard and the orchards all sit on the same estate, a few minutes\' walk apart. '
+        '<a href="../estate/">More about Witherslack Hall Estate</a>.</p>'
         f'<div class="doors doors--compact">{"".join(doors)}</div>'
         "</div></section>"
     )
@@ -125,7 +125,7 @@ def footer(current):
     return (
         '<footer class="site-footer"><div class="wrap"><div class="footer-grid">'
         f'<div class="footer-brand">{mark("estate")}<div><strong>Witherslack Hall Estate</strong>'
-        "<p>800 hectares between the River Winster and Whitbarrow Scar, home to the largest area of "
+        "<p>800 hectares between the River Winster and Whitbarrow Scar, and the largest area of "
         "semi natural woodland in Cumbria.</p></div></div>"
         f'<div><h4>The estate</h4><ul><li><a href="../estate/">Estate home</a></li>{links}</ul></div>'
         f'<div><h4>Find us</h4><p>{ADDRESS.replace(", ", ",<br>")}</p></div>'
@@ -133,7 +133,7 @@ def footer(current):
         '<li><a href="../estate/#contact">All contacts</a></li></ul></div>'
         "</div>"
         '<div class="footer-base"><span>&copy; <span data-year>2026</span> Witherslack Hall Estate</span>'
-        "<span>Woodland, orchard and house, managed together since 1990</span></div>"
+        "<span>Witherslack, Grange-over-Sands, Cumbria</span></div>"
         "</div></footer>"
     )
 

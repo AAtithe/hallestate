@@ -63,3 +63,14 @@ Open http://localhost:8000/estate/ and click through. Links between sites use fo
 - Halecat booking is by phone with Elaine. An availability calendar or booking widget would convert better.
 - Photography is taken from the existing sites. Halecat in particular needs interior shots (bedrooms, library, fire, summerhouse).
 - Set 301 redirects for important old URLs (for example `/firewood`, `/accommodation-details/`) to the matching section, to protect search rankings.
+- The "Who else is here" list on the estate page (Abi & Tom's, Charlie Whinney, Woodworks, Woodsmoke, the artists) comes from older pages on the current sites. Check each is still trading at Halecat before launch.
+- Guest quotes on the Halecat page are taken from the existing reviews page.
+
+## Writing style
+
+The copy is deliberately taken from the original sites, which were written by the family and the team. When adding text:
+
+- Write as "we", the people who live and work here. Contractions are fine.
+- Keep the specifics: the loo with a view, the rubber duck, the ear defenders, the garden closed sign in the second drawer. Detail is what makes it believable.
+- Plain headings ("Our firewood", "Good to know") beat slogans.
+- No marketing filler: avoid words like nestled, curated, bespoke, unforgettable, haven.

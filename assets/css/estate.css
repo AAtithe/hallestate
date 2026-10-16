@@ -429,3 +429,37 @@ h3 { font-size: clamp(24px, 2.4vw, 30px); }
   font-size: 13px;
 }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-grid > :first-child { grid-column: 1 / -1; } }
+
+/* --------------------------------------------------------------------------
+   Guest quotes, FAQs, verse, neighbours
+   -------------------------------------------------------------------------- */
+.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+.quote { margin: 0; padding: 32px 28px; background: var(--white); border-top: 3px solid var(--accent); }
+.quote p { font: 500 22px/1.35 var(--serif); margin-bottom: 18px; }
+.quote footer { font-size: 14px; color: var(--stone); }
+@media (max-width: 960px) { .quotes { grid-template-columns: 1fr; } }
+
+.faq { margin-top: 40px; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 22px 40px 22px 0;
+  position: relative;
+  font: 500 23px/1.3 var(--serif);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 18px; font: 400 26px/1 var(--sans); color: var(--accent); }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details > div { padding: 0 0 22px; max-width: 70ch; color: var(--ink-soft); }
+
+.verse { margin: 32px 0 0; padding-left: 24px; border-left: 3px solid var(--accent); }
+.verse p { font: italic 500 24px/1.4 var(--serif); margin-bottom: 10px; }
+.verse footer { font-size: 14px; color: var(--stone); }
+
+.neighbours { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 40px; margin-top: 48px; border-top: 1px solid var(--line); }
+.neighbours div { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.neighbours h3 { font-size: 24px; margin-bottom: 6px; }
+.neighbours p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+@media (max-width: 960px) { .neighbours { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .neighbours { grid-template-columns: 1fr; } }
