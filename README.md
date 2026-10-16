@@ -100,3 +100,12 @@ The copy is deliberately taken from the original sites, which were written by th
 - Keep the specifics: the loo with a view, the rubber duck, the ear defenders, the garden closed sign in the second drawer. Detail is what makes it believable.
 - Plain headings ("Our firewood", "Good to know") beat slogans.
 - No marketing filler: avoid words like nestled, curated, bespoke, unforgettable, haven.
+
+## Handmade touches
+
+The sites should feel made by the people who live here. The touches are deliberately rationed; more of them would tip into a theme.
+
+- Photos in a two column section go in `<figure class="print">` with a short handwritten `<figcaption>` saying plainly what the picture is.
+- One handwritten `<p class="note">` per section at most, and only for a real, useful fact (free delivery villages, the second drawer down). Never a slogan.
+- `<p class="signoff">The Stanley family</p>` appears once, on Halecat.
+- The estate map on the estate home is a sketch and says so. Edit labels in `estate/index.html`.

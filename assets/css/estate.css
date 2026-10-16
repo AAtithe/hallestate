@@ -550,3 +550,96 @@ button.cal-day { cursor: pointer; font-family: var(--sans); }
 .booking__done { padding: 8px 0; }
 .booking__done:focus { outline: none; }
 .booking__done h3 { color: var(--accent); }
+
+/* --------------------------------------------------------------------------
+   Handmade touches: paper, prints, pen.
+   Used sparingly. One handwritten note per section at most.
+   -------------------------------------------------------------------------- */
+:root { --hand: "Caveat", "Segoe Print", "Bradley Hand", cursive; }
+
+/* Paper grain */
+body {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .22 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.section--tint, .card, .door, .booking, .quote { background-image: inherit; }
+.section--tint { background-color: var(--paper-2); }
+.card, .door, .booking, .quote { background-color: var(--white); }
+
+/* Torn paper edge where a tinted section begins and ends */
+.section--tint { position: relative; }
+.section--tint::before, .section--tint::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: var(--paper-2);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M0 10 L0 6 Q4 3 8 5 T17 4 T26 6 T34 3 T43 5 T52 4 T61 6 T70 3 T78 5 T87 4 T96 6 T104 3 T113 5 L120 4 L120 10 Z'/%3E%3C/svg%3E") 0 0 / 240px 10px repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M0 10 L0 6 Q4 3 8 5 T17 4 T26 6 T34 3 T43 5 T52 4 T61 6 T70 3 T78 5 T87 4 T96 6 T104 3 T113 5 L120 4 L120 10 Z'/%3E%3C/svg%3E") 0 0 / 240px 10px repeat-x;
+}
+.section--tint::before { top: -9px; }
+.section--tint::after { bottom: -9px; transform: scaleY(-1); z-index: 1; }
+
+/* Photos mounted like prints, a little askew, held with tape */
+.print { position: relative; margin: 0; padding: 12px 12px 0; background: var(--white); box-shadow: 0 1px 2px rgba(29, 36, 31, 0.12), 0 14px 30px -18px rgba(29, 36, 31, 0.45); transform: rotate(-1.2deg); }
+.split--flip .print, .print--right { transform: rotate(1.1deg); }
+.print::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 110px;
+  height: 26px;
+  margin-left: -55px;
+  background: rgba(232, 222, 196, 0.78);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+  transform: rotate(-3deg);
+  clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 4% 96%, 0 50%);
+}
+.print figcaption { padding: 10px 4px 12px; font: 400 22px/1.2 var(--hand); color: var(--ink-soft); text-align: center; }
+@media (max-width: 860px) { .print, .split--flip .print { transform: rotate(-0.6deg); } }
+
+/* Handwritten notes, with a pen-drawn arrow */
+.note {
+  display: inline-block;
+  margin: 8px 0 0 28px;
+  font: 500 25px/1.15 var(--hand);
+  color: var(--accent);
+  transform: rotate(-2.5deg);
+  position: relative;
+}
+.note::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: -14px;
+  width: 26px;
+  height: 30px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 30' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M22 27 C10 26 4 18 5 4'/%3E%3Cpath d='M1.5 9 L5 3.5 L9.5 8'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 30' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M22 27 C10 26 4 18 5 4'/%3E%3Cpath d='M1.5 9 L5 3.5 L9.5 8'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.section--accent .note { color: var(--white); }
+.signoff { margin-top: 20px; font: 500 30px/1 var(--hand); color: var(--accent); transform: rotate(-2deg); display: inline-block; }
+
+/* Hand-inked marks: the estate rings get a slight wobble */
+.lockup svg, .door__head svg, .card__mark, .footer-brand svg { filter: url(#hand-ink); }
+
+/* Hand-drawn estate map */
+.map { margin: 64px 0 0; padding: clamp(16px, 3vw, 32px); background-color: var(--white); border: 1px solid var(--line); }
+.map svg { display: block; width: 100%; height: auto; }
+.map figcaption { margin-top: 8px; font: 400 21px/1.2 var(--hand); color: var(--stone); text-align: right; }
+.map .ink { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.map .water { fill: none; stroke: #6d8c9a; stroke-width: 2.2; stroke-linecap: round; }
+.map .bay { fill: #dfe7e6; stroke: #6d8c9a; stroke-width: 1.4; }
+.map .scar { fill: none; stroke: var(--stone); stroke-width: 1.4; stroke-linecap: round; }
+.map .tree { fill: #cfdcc6; stroke: var(--woodlands); stroke-width: 1.3; }
+.map .apple { fill: #e7d3e3; stroke: var(--orchards); stroke-width: 1.3; }
+.map .house { fill: #f1e2dc; stroke: var(--halecat); stroke-width: 1.8; stroke-linejoin: round; }
+.map .road { fill: none; stroke: #b9ae97; stroke-width: 1.3; stroke-dasharray: 5 5; }
+.map text { font-family: var(--hand); fill: var(--ink-soft); font-size: 24px; }
+.map text.big { font-size: 30px; fill: var(--ink); }
+.map text.is-halecat { fill: var(--halecat); }
+.map text.is-woodlands { fill: var(--woodlands); }
+.map text.is-orchards { fill: var(--orchards); }
+.map g.rough { filter: url(#hand-ink); }

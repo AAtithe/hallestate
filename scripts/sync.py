@@ -72,7 +72,13 @@ def sprite(_arg):
         f'<symbol id="mark-{key}" viewBox="0 0 48 48">{RING}{centre}</symbol>'
         for key, centre in CENTRES.items()
     )
-    return f'<svg width="0" height="0" style="position:absolute" aria-hidden="true">{symbols}</svg>'
+    # A gentle wobble so lines look drawn with a pen rather than a machine.
+    ink = (
+        '<filter id="hand-ink" x="-5%" y="-5%" width="110%" height="110%">'
+        '<feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>'
+        '<feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>'
+    )
+    return f'<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>{ink}</defs>{symbols}</svg>'
 
 
 def mark(key, cls=""):
