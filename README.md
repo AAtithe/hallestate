@@ -119,4 +119,4 @@ python3 scripts/sync.py
 python3 scripts/rename_preview.py orchards "Halecat Orchards"
 ```
 
-This writes `previews/halecat-orchards/`, open it at http://localhost:8000/previews/halecat-orchards/. It carries a "Preview only" banner and is hidden from search engines. Email addresses and social links keep the current name, because changing those means new accounts.
+This writes `previews/halecat-orchards/`, open it at http://localhost:8000/previews/halecat-orchards/. Two tags in the top right switch the whole page between the current and the new name. It carries a "Preview only" banner and is hidden from search engines. Email addresses and social links keep the current name, because changing those means new accounts.

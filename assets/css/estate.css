@@ -646,10 +646,27 @@ body {
 
 /* Banner on renamed previews (scripts/rename_preview.py) */
 .preview-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
   background: #f3d98b;
   color: #3a2f12;
   font: 600 13px/1.4 var(--sans);
   letter-spacing: 0.02em;
-  text-align: center;
-  padding: 8px 16px;
+  padding: 8px var(--gutter);
 }
+.preview-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.preview-tags button {
+  padding: 6px 12px;
+  border: 1px solid #3a2f12;
+  border-radius: 999px;
+  background: transparent;
+  color: #3a2f12;
+  font: 600 13px/1.2 var(--sans);
+  cursor: pointer;
+}
+.preview-tags button:hover { background: rgba(58, 47, 18, 0.1); }
+.preview-tags button[aria-pressed="true"] { background: #3a2f12; color: #f3d98b; }
+.preview-tags button:focus-visible { outline: 2px solid #3a2f12; outline-offset: 2px; }

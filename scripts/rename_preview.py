@@ -45,12 +45,36 @@ def main():
     # The copy sits one folder deeper, so shared files are one more level up.
     html = html.replace('"../', '"../../')
 
+    # Two tags, top right, flip every mention of the name between old and new.
     banner = (
-        '<div class="preview-banner">Preview only: how '
-        f"{old_name} would look as {new_name}. Not a live website.</div>"
+        '<div class="preview-banner"><span>Preview only, not a live website. Compare the names:</span>'
+        '<div class="preview-tags" role="group" aria-label="Business name">'
+        f'<button type="button" data-name="{old_name}" aria-pressed="false">{old_name}</button>'
+        f'<button type="button" data-name="{new_name}" aria-pressed="true">{new_name}</button>'
+        "</div></div>"
+    )
+    switcher = (
+        "<script>\n(function () {\n"
+        "  var tags = document.querySelectorAll('.preview-tags button');\n"
+        f"  var shown = {new_name!r};\n"
+        "  function swap(to) {\n"
+        "    if (to === shown) return;\n"
+        "    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);\n"
+        "    var node;\n"
+        "    while ((node = walker.nextNode())) {\n"
+        "      if (node.parentNode.closest('.preview-tags, script, style')) continue;\n"
+        "      if (node.nodeValue.indexOf(shown) !== -1) node.nodeValue = node.nodeValue.split(shown).join(to);\n"
+        "    }\n"
+        "    document.title = document.title.split(shown).join(to);\n"
+        "    shown = to;\n"
+        "    for (var i = 0; i < tags.length; i++) tags[i].setAttribute('aria-pressed', String(tags[i].dataset.name === to));\n"
+        "  }\n"
+        "  for (var i = 0; i < tags.length; i++) tags[i].addEventListener('click', function () { swap(this.dataset.name); });\n"
+        "})();\n</script>\n"
     )
     html = html.replace("<body ", '<body data-preview="1" ', 1)
     html = re.sub(r"(<a class=\"skip\"[^>]*>[^<]*</a>)", r"\1\n" + banner, html, count=1)
+    html = html.replace("</body>", switcher + "</body>", 1)
     html = html.replace(
         '<meta name="viewport"',
         '<meta name="robots" content="noindex, nofollow">\n  <meta name="viewport"',
