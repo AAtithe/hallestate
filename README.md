@@ -120,3 +120,7 @@ python3 scripts/rename_preview.py orchards "Halecat Orchards"
 ```
 
 This writes `previews/halecat-orchards/`, open it at http://localhost:8000/previews/halecat-orchards/. Two tags in the top right switch the whole page between the current and the new name. It carries a "Preview only" banner and is hidden from search engines. Email addresses and social links keep the current name, because changing those means new accounts.
+
+## Orchards name comparison (this branch only)
+
+The `claude/dreamy-johnson-h5xvv2` branch adds `assets/js/name-switch.js` to every page: two tags in the top right switch every mention between Witherslack Orchards and Halecat Orchards, and the choice is remembered while moving between the sites. It is for showing the family the two options and must not be merged to `main`.
