@@ -724,3 +724,23 @@ body {
 .shop-thanks h3 { color: var(--accent); }
 .shop-thanks p { margin: 0; }
 #shop .note { margin-top: 18px; }
+
+/* --------------------------------------------------------------------------
+   Neighbours and Out and about
+   -------------------------------------------------------------------------- */
+.neighbours__group { margin: 48px 0 0; font: 600 12px/1.4 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+.neighbours__group + .neighbours { margin-top: 16px; }
+.neighbours h3 a { color: var(--ink); text-decoration: none; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 100% 1px; background-position: 0 100%; background-repeat: no-repeat; }
+.neighbours h3 a:hover { color: var(--accent); }
+a[target="_blank"]::after { content: "\2009\2197"; font-size: 0.8em; color: var(--stone); }
+
+.places { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.place { padding: 28px 26px; background-color: var(--white); border: 1px solid var(--line); min-width: 0; }
+.place__dist { margin: 0 0 6px; font: 500 22px/1 var(--hand); color: var(--accent); transform: rotate(-2deg); display: inline-block; }
+.place h3 { margin-bottom: 14px; }
+.place ul { list-style: none; margin: 0; padding: 0; }
+.place li { position: relative; padding: 0 0 12px 18px; font-size: 15.5px; line-height: 1.55; color: var(--ink-soft); }
+.place li::before { content: ""; position: absolute; left: 2px; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.6; }
+.place li:last-child { padding-bottom: 0; }
+@media (max-width: 960px) { .places { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .places { grid-template-columns: 1fr; } }
