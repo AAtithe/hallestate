@@ -42,6 +42,7 @@ http
       let raw = "";
       req.on("data", (c) => (raw += c));
       req.on("end", async () => {
+        req.rawBody = raw;
         try {
           req.body = raw && /json/.test(req.headers["content-type"] || "") ? JSON.parse(raw) : raw;
         } catch {

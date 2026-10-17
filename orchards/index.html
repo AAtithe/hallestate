@@ -32,7 +32,7 @@
       <a href="#made">How we make it</a>
       <a href="#orchards">Our orchards</a>
       <a href="#volunteer">Volunteer</a>
-      <a class="btn" href="#buy">Buy</a>
+      <a class="btn" href="#shop">Shop</a>
     </nav>
   </div>
 </header>
@@ -45,7 +45,7 @@
       <h1>Welcome to Witherslack Orchards</h1>
       <p>Juice and damson gin from the ancient orchards of Witherslack Estate. Picked by our team and our volunteers, and pressed by hand up at Halecat.</p>
       <div class="btn-row">
-        <a class="btn btn--light" href="#buy">Buy direct</a>
+        <a class="btn btn--light" href="#shop">Shop for Christmas</a>
         <a class="btn btn--ghost" href="#orchards">About the orchards</a>
       </div>
     </div>
@@ -80,7 +80,58 @@
     </div>
   </section>
 
-  <section class="section section--tint" id="made" aria-labelledby="made-title">
+  <section class="section section--tint" id="shop" aria-labelledby="shop-title">
+    <div class="wrap">
+      <div class="intro">
+        <div>
+          <span class="eyebrow">The shop</span>
+          <h2 id="shop-title">Order for Christmas</h2>
+          <p class="note" data-christmas hidden></p>
+        </div>
+        <div>
+          <p class="lede">Juice and damson gin, packed by hand at Halecat. Collect from the yard, or we'll deliver.</p>
+          <p>Add a gift message and we'll put it in with your order.</p>
+        </div>
+      </div>
+
+      <div class="shop-thanks" data-thanks tabindex="-1" hidden>
+        <h3>Thank you for your order</h3>
+        <p>Your payment has gone through and we've emailed you a receipt. We'll be in touch about collection or delivery.</p>
+      </div>
+
+      <div class="booking shop" id="shop-form" hidden>
+        <ul class="shop__items" data-items aria-label="Products"></ul>
+
+        <form class="shop__checkout" novalidate>
+          <fieldset class="field-group">
+            <legend>How would you like it?</legend>
+            <div class="segmented segmented--stack" data-fulfilment></div>
+          </fieldset>
+          <div class="field">
+            <label for="s-gift">Gift message <span>Optional</span></label>
+            <textarea id="s-gift" name="giftMessage" rows="3" maxlength="300" placeholder="Happy Christmas, love from all of us..."></textarea>
+          </div>
+          <label class="check" data-age hidden>
+            <input type="checkbox" name="ageConfirmed">
+            <span>I'm 18 or over. Damson gin is only sold to adults, and ID may be checked on delivery or collection.</span>
+          </label>
+          <div class="field field--hp" aria-hidden="true">
+            <label for="s-website">Leave this empty</label>
+            <input id="s-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="order__summary shop__summary" aria-live="polite">
+            <dl data-summary></dl>
+            <p class="order__total" data-total></p>
+          </div>
+          <p class="form-error" data-error role="alert" hidden></p>
+          <button class="btn" type="submit" disabled>Pay securely</button>
+          <p class="form-note" data-pay-note>Payment is handled by Stripe. We never see your card details.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="made" aria-labelledby="made-title">
     <div class="wrap">
       <div class="split">
         <figure class="print"><img src="../assets/img/orchards-bottle-moss.jpg" alt="A bottle of Damson Gin on a mossy stone in the orchard" loading="lazy"><figcaption>Damson gin, out in the orchard</figcaption></figure>
@@ -95,7 +146,7 @@
     </div>
   </section>
 
-  <section class="section" id="orchards" aria-labelledby="orchards-title">
+  <section class="section section--tint" id="orchards" aria-labelledby="orchards-title">
     <div class="wrap">
       <div class="intro">
         <div>
@@ -127,7 +178,7 @@
     </div>
   </section>
 
-  <section class="section section--tint" id="volunteer" aria-labelledby="volunteer-title">
+  <section class="section" id="volunteer" aria-labelledby="volunteer-title">
     <div class="wrap intro">
       <div>
         <span class="eyebrow">Volunteer &amp; donate</span>
@@ -142,7 +193,7 @@
     </div>
   </section>
 
-  <section class="section" id="stockists" aria-labelledby="stockists-title">
+  <section class="section section--tint" id="stockists" aria-labelledby="stockists-title">
     <div class="wrap intro">
       <div>
         <span class="eyebrow">Stockists</span>
@@ -185,5 +236,7 @@
 <footer class="site-footer"><div class="wrap"><div class="footer-grid"><div class="footer-brand"><svg aria-hidden="true"><use href="#mark-estate"/></svg><div><strong>Witherslack Hall Estate</strong><p>800 hectares between the River Winster and Whitbarrow Scar, and the largest area of semi natural woodland in Cumbria.</p></div></div><div><h4>The estate</h4><ul><li><a href="../estate/">Estate home</a></li><li><a href="../halecat/">Halecat House</a></li><li><a href="../woodlands/">Witherslack Woodlands</a></li><li><a href="../orchards/">Witherslack Orchards</a></li></ul></div><div><h4>Find us</h4><p>Halecat,<br>Witherslack,<br>Grange-over-Sands,<br>Cumbria LA11 6RT</p></div><div><h4>Estate office</h4><ul><li><a href="tel:+441539552387">015395 52387</a></li><li><a href="../estate/#contact">All contacts</a></li></ul></div></div><div class="footer-base"><span>&copy; <span data-year>2026</span> Witherslack Hall Estate</span><span>Witherslack, Grange-over-Sands, Cumbria</span></div></div></footer>
 <!-- /@footer -->
 <script src="../assets/js/estate.js" defer></script>
+<script src="../assets/js/shop-rules.js" defer></script>
+<script src="../assets/js/shop.js" defer></script>
 </body>
 </html>
