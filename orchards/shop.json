@@ -1,0 +1,17 @@
+{
+  "maxPerItem": 12,
+  "christmas": {
+    "lastOrderForDelivery": "2026-12-15",
+    "lastCollection": "2026-12-23"
+  },
+  "products": [
+    { "id": "apple-juice", "name": "Apple juice", "description": "Pressed from estate and local apples, hand sorted at Halecat", "price": null, "alcohol": false, "available": true },
+    { "id": "apple-damson", "name": "Apple & damson juice", "description": "Our apple juice with damson syrup made from Witherslack damsons", "price": null, "alcohol": false, "available": true },
+    { "id": "damson-gin", "name": "Damson gin liqueur", "description": "Made with Witherslack damsons. For over-18s only", "price": null, "alcohol": true, "available": true }
+  ],
+  "fulfilment": [
+    { "id": "collect", "label": "Collect from Halecat", "description": "From the yard at Halecat, Monday to Friday", "price": 0, "address": false },
+    { "id": "local", "label": "Local delivery", "description": "Witherslack and South Cumbria", "price": null, "address": true },
+    { "id": "post", "label": "UK delivery", "description": "Tracked courier. ID may be checked for gin", "price": null, "address": true }
+  ]
+}

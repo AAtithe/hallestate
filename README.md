@@ -103,11 +103,39 @@ Settings in Vercel:
 
 `HALECAT_FROM_EMAIL` does the same job for the booking calendar, so each business emails from its own address.
 
+## Orchards shop
+
+Customers fill a basket (apple juice, apple and damson juice, damson gin), choose collection from Halecat, local delivery or UK delivery, and can add a gift message. "Pay securely" opens Stripe's checkout page, so card details never touch our site. When Stripe confirms payment, the orchards team gets an email with the order, address and gift message, and the customer gets a note about what happens next (Stripe also sends its own receipt).
+
+Damson gin needs an "I'm 18 or over" tick, and the team email says to check ID on handover.
+
+Until every item in the basket and the chosen delivery have a price, and Stripe is set up, the same basket is sent as an email order instead. So the shop works from day one and switches to card payment on its own.
+
+Settings in `orchards/shop.json`:
+
+- `price` for each product and each delivery option, in pounds (for example `4.5`). `null` means "price on request" and email ordering.
+- `available`: set to `false` to show "Sold out".
+- `christmas.lastOrderForDelivery` and `christmas.lastCollection`: the dates shown in the Christmas note. Check these against your courier's last posting dates.
+- `maxPerItem`: the most of one item in a basket.
+
+Settings in Vercel:
+
+| Variable | What it is |
+|---|---|
+| `STRIPE_SECRET_KEY` | From Stripe, Developers, API keys. Use the test key (`sk_test_...`) first, then the live key. |
+| `STRIPE_WEBHOOK_SECRET` | In Stripe, Developers, Webhooks, add an endpoint `https://<your site>/api/stripe-webhook/` for the event `checkout.session.completed`, then copy its signing secret (`whsec_...`). |
+| `ORCHARDS_FROM_EMAIL` | Sender, for example `Witherslack Orchards <shop@witherslackorchards.co.uk>`. Verify the domain in Resend. |
+| `ORCHARDS_ORDERS_TO` | Where paid orders go. Defaults to juice@witherslackorchards.co.uk. |
+
+Test with Stripe's test key and card 4242 4242 4242 4242 (any future date, any CVC) before switching to the live key.
+
+Selling alcohol online needs a premises licence covering off-sales for the address the orders are sold from, with a named designated premises supervisor. Check the licence covers internet and mail order sales, and that your courier accepts alcohol with age-verified delivery.
+
 ## Before launch
 
 - Confirm `witherslackestate.co.uk` is the right domain for the estate home (it matches the estate office email). If not, change it in `scripts/sync.py` and re-run.
 - Orchards phone: the old site shows both 07760 286785 and 07881 098359. The new site uses 07760 286785.
-- The Orchards Wix shop will stop working once the domain moves. Online ordering is currently by email; add a shop (for example Shopify Buy Button or Stripe Payment Links) if direct sales justify it.
+- The Orchards Wix shop stops working once the domain moves. The new shop (below) replaces it.
 - Photography is taken from the existing sites. Halecat in particular needs interior shots (bedrooms, library, fire, summerhouse).
 - Set 301 redirects for important old URLs (for example `/firewood`, `/accommodation-details/`) to the matching section, to protect search rankings.
 - The "Who else is here" list on the estate page (Abi & Tom's, Charlie Whinney, Woodworks, Woodsmoke, the artists) comes from older pages on the current sites. Check each is still trading at Halecat before launch.
